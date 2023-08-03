@@ -1,9 +1,13 @@
 package a0264334.tees.ac.mysignupapp;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.customview.widget.Openable;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,8 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.security.PrivateKey;
+
 
 public class MainActivity extends AppCompatActivity {
+     private MaterialButton materialButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +34,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         MaterialButton regbtn = (MaterialButton) findViewById(R.id.signupbtn);
-        regbtn.setOnClickListener(view -> {
-
-            String Username1 = username.getText().toString();
-            Toast.makeText(MainActivity.this, "username is " + Username1, Toast.LENGTH_SHORT).show();
+        regbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLoginActivity();
+            }
         });
     }
+    public void openLoginActivity() {
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+    }
+
+
+
 
 }
 
